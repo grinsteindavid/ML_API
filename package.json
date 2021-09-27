@@ -2,8 +2,7 @@
     "name": "ml_api",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
-    "type": "module",
+    "main": "dist/index.js",
     "scripts": {
         "dev": "scripty",
         "build": "scripty",

@@ -1,4 +1,9 @@
-import express from 'express';
+import express, {
+    ErrorRequestHandler,
+    Request,
+    Response,
+    NextFunction,
+} from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
@@ -11,10 +16,17 @@ app.use(cors());
 
 app.use('/api', require('./routes'));
 
-app.use((err, request, response, next) => {
+const errorHandler = (
+    err: ErrorRequestHandler,
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
     // log the error, for now just console.log
     console.log(err);
-    response.status(500).send('Something broke!');
-});
+    res.status(500).send('Something broke!');
+};
+
+app.use(errorHandler);
 
 export default app;
