@@ -1,5 +1,5 @@
 import { datasource } from '../mocks/datasource.json';
-import brain from 'brain.js/src/index';
+import brain from 'brain.js';
 
 export const predictTraffic = (input: {
     city: number;
