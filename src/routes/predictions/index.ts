@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { get } from './controller';
+import { predict } from './controller';
 
 const router = Router({ mergeParams: true });
 
-router.get('/', get);
+router.post('/', predict);
 
 export default router;

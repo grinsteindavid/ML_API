@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
 
-export const get = async (req: Request, res: Response) => {
+export const predict = async (req: Request, res: Response) => {
     res.status(200).json({});
 };

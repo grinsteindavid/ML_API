@@ -6,8 +6,7 @@
     "scripts": {
         "dev": "scripty",
         "build": "scripty",
-        "test": "scripty",
-        "routes": "scripty"
+        "test": "scripty"
     },
     "repository": {
         "type": "git",
