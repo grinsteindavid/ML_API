@@ -1,4 +1,4 @@
-const { predictTraffic } = require('./nn-brain');
+import { predictTraffic } from './nn-brain';
 
 describe('utils predictTraffic', () => {
     it('should predict input as 1', () => {
