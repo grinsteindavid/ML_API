@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+pnpm ts-node ./scripts/__utils__/list-endpoints.js

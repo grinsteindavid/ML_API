@@ -11,6 +11,7 @@ specifiers:
   cors: ^2.8.5
   eslint: ^7.32.0
   express: ^4.17.1
+  express-list-endpoints: ^6.0.0
   jest: ^27.2.2
   morgan: ^1.10.0
   nodemon: ^2.0.13
@@ -33,6 +34,7 @@ devDependencies:
   '@types/node': 16.10.1
   concurrently: 6.2.1
   eslint: 7.32.0
+  express-list-endpoints: 6.0.0
   jest: 27.2.2_ts-node@10.2.1
   nodemon: 2.0.13
   scripty: 2.0.0
@@ -1909,6 +1911,11 @@ packages:
       jest-matcher-utils: 27.2.2
       jest-message-util: 27.2.2
       jest-regex-util: 27.0.6
+    dev: true
+
+  /express-list-endpoints/6.0.0:
+    resolution: {integrity: sha512-1I30bSVego+AU/eSsX/bV2xrOXW5tFhsuXZp7wZd9396bAAxH7KHaAwLXQYra0Aw33xA67HmNiceGf2SOvXaLg==}
+    engines: {node: '>=10'}
     dev: true
 
   /express/4.17.1:
