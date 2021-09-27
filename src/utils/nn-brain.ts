@@ -6,7 +6,7 @@ export const predictTraffic = (input: {
     region: number;
     country: number;
     device: number;
-}) => {
+}): number[] => {
     const net = new brain.NeuralNetwork();
     net.train(datasource);
 
