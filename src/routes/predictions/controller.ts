@@ -9,6 +9,5 @@ export const predict = async (
     const { input } = req.body;
 
     const result = predictTraffic(input);
-
-    res.status(200).json({ result });
+    res.status(200).json({ result: result[0] });
 };
