@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { nnInput } from '../../types/nn-input';
+import { RequestBody } from '../../types/request-body';
 import { predictTraffic } from '../../utils/nn-brain';
 
 export const predict = async (
-    req: Request<any, any, { input: nnInput }>,
+    req: Request<any, any, RequestBody>,
     res: Response
 ) => {
     const { input } = req.body;
