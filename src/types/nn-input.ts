@@ -1,4 +1,4 @@
-export type nnInput = {
+export type NNInput = {
     city: number;
     region: number;
     country: number;

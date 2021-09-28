@@ -1,9 +1,9 @@
 import Joi from 'joi';
-import { nnInput } from '../../types/nn-input';
+import { NNInput } from '../../types/nn-input';
 import { RequestBody } from '../../types/request-body';
 
 export const Body = Joi.object<RequestBody>().keys({
-    input: Joi.object<nnInput>()
+    input: Joi.object<NNInput>()
         .keys({
             city: Joi.number().min(0).max(1),
             region: Joi.number().min(0).max(1),
