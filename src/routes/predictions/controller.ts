@@ -12,3 +12,7 @@ export const predict = async (
     const result = predictTraffic(net, input);
     res.status(200).json({ result });
 };
+
+export const getModel = async (req: Request, res: Response) => {
+    res.status(200).json({ model: net.toJSON() });
+};
