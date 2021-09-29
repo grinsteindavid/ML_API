@@ -1,10 +1,8 @@
-import { datasource } from '../mocks/datasource.json';
-import brain from 'brain.js';
+import { NeuralNetwork } from 'brain.js';
 import { NNInput } from '../types/nn-input';
 
-export const predictTraffic = (input: NNInput): number[] => {
-    const net = new brain.NeuralNetwork();
-    net.train(datasource);
+export const predictTraffic = (net: NeuralNetwork, input: NNInput): number => {
+    const result = net.run<NNInput, number[]>(input);
 
-    return net.run(input);
+    return result ? result[0] : 0;
 };

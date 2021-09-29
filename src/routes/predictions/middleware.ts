@@ -5,7 +5,7 @@ export const middleware = (
     schema: Joi.ObjectSchema<any>,
     property: 'body' | 'params' | 'query'
 ) => {
-    return (req: Request, res: Response, next: NextFunction) => {
+    const validate = (req: Request, res: Response, next: NextFunction) => {
         const { error } = schema.validate(req[property]);
         const valid = error == null;
 
@@ -19,4 +19,6 @@ export const middleware = (
             res.status(422).json({ error: `[${property}] ${message}` });
         }
     };
+
+    return validate;
 };
