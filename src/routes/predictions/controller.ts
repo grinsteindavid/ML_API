@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { net } from '../..';
+import { net } from '../../server';
 import { RequestBody } from '../../types/request-body';
 import { predictTraffic } from '../../utils/nn-brain';
 
