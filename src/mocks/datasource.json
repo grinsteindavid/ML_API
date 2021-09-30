@@ -2,37 +2,28 @@
     "datasource": [
         {
             "input": {
-                "city": 0,
-                "region": 0,
-                "country": 0,
-                "device": 0
-            },
-            "output": [0]
-        },
-        {
-            "input": {
-                "city": 0.1,
-                "region": 0.1,
-                "country": 0.1,
-                "device": 0.1
+                "city": "Miami",
+                "region": "Florida",
+                "country": "United States",
+                "device": "iPhone"
             },
             "output": [1]
         },
         {
             "input": {
-                "city": 0.2,
-                "region": 0.1,
-                "country": 0.2,
-                "device": 0.1
+                "city": "Jacksonville",
+                "region": "Florida",
+                "country": "United States",
+                "device": "iPhone"
             },
             "output": [1]
         },
         {
             "input": {
-                "city": 0.1,
-                "region": 0.2,
-                "country": 0.1,
-                "device": 0.1
+                "city": "Miami",
+                "region": "Florida",
+                "country": "United States",
+                "device": "Android"
             },
             "output": [0]
         }

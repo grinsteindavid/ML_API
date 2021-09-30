@@ -1,6 +1,6 @@
 export type NNInput = {
-    city: number;
-    region: number;
-    country: number;
-    device: number;
+    city: string;
+    region: string;
+    country: string;
+    device: string;
 };
