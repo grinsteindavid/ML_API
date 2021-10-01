@@ -6,19 +6,19 @@ import { NNParameter } from '../types/nn-parameter';
 export const normalize = (input: NNParameter): NNNormalizedInput => {
     return {
         city: normalizeByMinMax(DICTIONARY, {
-            key: 'city',
+            section: 'city',
             value: input['city'],
         }),
         country: normalizeByMinMax(DICTIONARY, {
-            key: 'country',
+            section: 'country',
             value: input['country'],
         }),
         region: normalizeByMinMax(DICTIONARY, {
-            key: 'region',
+            section: 'region',
             value: input['region'],
         }),
         os: normalizeByMinMax(DICTIONARY, {
-            key: 'os',
+            section: 'os',
             value: input['os'],
         }),
     };
@@ -26,13 +26,13 @@ export const normalize = (input: NNParameter): NNNormalizedInput => {
 
 export const normalizeByMinMax = (
     dictionary: NNDictionary,
-    parameter: { key: NNDictionaryKeys; value: string }
+    parameter: { section: NNDictionaryKeys; value: string }
 ): number => {
     let value = 0;
-    if (dictionary[parameter.key][parameter.value] !== undefined) {
+    if (dictionary[parameter.section][parameter.value] !== undefined) {
         value =
-            dictionary[parameter.key][parameter.value] /
-            (Object.keys(dictionary[parameter.key]).length + 1);
+            dictionary[parameter.section][parameter.value] /
+            (Object.keys(dictionary[parameter.section]).length + 1);
     }
 
     return value;

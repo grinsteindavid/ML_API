@@ -29,19 +29,19 @@ app.listen(3000, async () => {
                     ...item,
                     input: {
                         city: normalizeByMinMax(DICTIONARY, {
-                            key: 'city',
+                            section: 'city',
                             value: item.input.city,
                         }),
                         region: normalizeByMinMax(DICTIONARY, {
-                            key: 'region',
+                            section: 'region',
                             value: item.input.region,
                         }),
                         country: normalizeByMinMax(DICTIONARY, {
-                            key: 'country',
+                            section: 'country',
                             value: item.input.country,
                         }),
                         os: normalizeByMinMax(DICTIONARY, {
-                            key: 'os',
+                            section: 'os',
                             value: item.input.os,
                         }),
                     },
