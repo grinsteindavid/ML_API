@@ -4,20 +4,21 @@ import app from './app';
 import { datasource } from './mocks/datasource.json';
 import brain from 'brain.js';
 import { DICTIONARY } from './constants/dicctionary';
-import { buildDicctionarySection, normalizeByMinMax } from './utils/normalize';
+import { normalizeByMinMax } from './utils/normalize';
+import { buildDictionarySection } from './utils/build-dictionary-section';
 
 export const net = new brain.NeuralNetwork();
 
-DICTIONARY['city'] = buildDicctionarySection(
+DICTIONARY['city'] = buildDictionarySection(
     datasource.map((item) => item.input.city)
 );
-DICTIONARY['country'] = buildDicctionarySection(
+DICTIONARY['country'] = buildDictionarySection(
     datasource.map((item) => item.input.country)
 );
-DICTIONARY['region'] = buildDicctionarySection(
+DICTIONARY['region'] = buildDictionarySection(
     datasource.map((item) => item.input.region)
 );
-DICTIONARY['os'] = buildDicctionarySection(
+DICTIONARY['os'] = buildDictionarySection(
     datasource.map((item) => item.input.os)
 );
 

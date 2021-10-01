@@ -32,22 +32,8 @@ export const normalizeByMinMax = (
     if (dictionary[parameter.section][parameter.value] !== undefined) {
         value =
             dictionary[parameter.section][parameter.value] /
-            (Object.keys(dictionary[parameter.section]).length + 1);
+            Object.keys(dictionary[parameter.section]).length;
     }
 
     return value;
-};
-
-export const buildDicctionarySection = (
-    values: string[]
-): { [key: string]: number } => {
-    const section: { [key: string]: number } = {};
-
-    [...new Set(values)].forEach((value) => {
-        if (section[value] === undefined) {
-            section[value] = Object.keys(section).length + 1;
-        }
-    });
-
-    return section;
 };

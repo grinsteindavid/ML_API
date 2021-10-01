@@ -2,56 +2,60 @@ import { predictTraffic } from './nn-brain';
 import { datasource } from '../mocks/datasource.json';
 import brain from 'brain.js';
 import { DICTIONARY } from '../constants/dicctionary';
-import { buildDicctionarySection, normalizeByMinMax } from './normalize';
+import { normalizeByMinMax } from './normalize';
+import { buildDictionarySection } from './build-dictionary-section';
 
-describe('utils predictTraffic', () => {
-    it('should predict input as greather than 0.8', () => {
-        DICTIONARY['city'] = buildDicctionarySection(
+describe('utils', () => {
+    beforeAll(() => {
+        DICTIONARY['city'] = buildDictionarySection(
             datasource.map((item) => item.input.city)
         );
-        DICTIONARY['country'] = buildDicctionarySection(
+        DICTIONARY['country'] = buildDictionarySection(
             datasource.map((item) => item.input.country)
         );
-        DICTIONARY['region'] = buildDicctionarySection(
+        DICTIONARY['region'] = buildDictionarySection(
             datasource.map((item) => item.input.region)
         );
-        DICTIONARY['os'] = buildDicctionarySection(
+        DICTIONARY['os'] = buildDictionarySection(
             datasource.map((item) => item.input.os)
         );
+    });
+    describe('predictTraffic', () => {
+        it('should predict input as greather than 0.8', () => {
+            const net = new brain.NeuralNetwork();
+            net.train(
+                datasource.map((item) => {
+                    return {
+                        ...item,
+                        input: {
+                            city: normalizeByMinMax(DICTIONARY, {
+                                section: 'city',
+                                value: item.input.city,
+                            }),
+                            region: normalizeByMinMax(DICTIONARY, {
+                                section: 'region',
+                                value: item.input.region,
+                            }),
+                            country: normalizeByMinMax(DICTIONARY, {
+                                section: 'country',
+                                value: item.input.country,
+                            }),
+                            os: normalizeByMinMax(DICTIONARY, {
+                                section: 'os',
+                                value: item.input.os,
+                            }),
+                        },
+                    };
+                })
+            );
 
-        const net = new brain.NeuralNetwork();
-        net.train(
-            datasource.map((item) => {
-                return {
-                    ...item,
-                    input: {
-                        city: normalizeByMinMax(DICTIONARY, {
-                            section: 'city',
-                            value: item.input.city,
-                        }),
-                        region: normalizeByMinMax(DICTIONARY, {
-                            section: 'region',
-                            value: item.input.region,
-                        }),
-                        country: normalizeByMinMax(DICTIONARY, {
-                            section: 'country',
-                            value: item.input.country,
-                        }),
-                        os: normalizeByMinMax(DICTIONARY, {
-                            section: 'os',
-                            value: item.input.os,
-                        }),
-                    },
-                };
-            })
-        );
-
-        const result = predictTraffic(net, {
-            city: '',
-            region: '',
-            country: '',
-            os: '',
+            const result = predictTraffic(net, {
+                city: 'Miami',
+                region: 'Florida',
+                country: 'United States',
+                os: 'iPhone',
+            });
+            expect(result).toBe(0);
         });
-        expect(result > 0.8).toBeTruthy();
     });
 });
