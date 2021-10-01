@@ -35,9 +35,9 @@ export const parseParameter = (
 
 export const buildDicctionary = (
     diccionary: NNDictionary,
-    parameter: NNParameter
-): number => {
-    let value = 0;
+    parameter: { key: NNDictionaryKeys; value: string[] }
+): { [key: string]: number } => {
+    const section: { [key: string]: number } = {};
 
-    return value;
+    return section;
 };
