@@ -1,3 +1,5 @@
-import { NNInput } from './nn-input';
+import { NNParameter } from './nn-parameter';
 
-export type RequestBody = { input: NNInput };
+export type RequestBody = {
+    input: NNParameter;
+};
