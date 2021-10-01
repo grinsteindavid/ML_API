@@ -9,7 +9,7 @@ describe('utils', () => {
                 datasource.map((item) => item.input.city)
             ));
 
-            expect(section).toBe({
+            expect(section).toStrictEqual({
                 Miami: 1,
                 Jacksonville: 2,
                 'Los Angeles': 3,

@@ -24,23 +24,23 @@ describe('utils', () => {
                 city: 'Miami',
                 region: 'Florida',
                 country: 'United States',
-                os: 'iPhone',
+                os: 'iOS',
             });
-            expect(result).toBe({
-                city: 1,
-                region: 1,
+            expect(result).toStrictEqual({
+                city: 0.3333333333333333,
+                region: 0.5,
                 country: 1,
-                os: 1,
+                os: 0.5,
             });
         });
     });
     describe('normalizeByMinMax', () => {
-        it('should ', () => {
+        it('should get a normalized number value from city[Miami] key section', () => {
             const result = normalizeByMinMax(DICTIONARY, {
                 section: 'city',
                 value: 'Miami',
             });
-            expect(result).toBe(1);
+            expect(result).toBe(0.3333333333333333);
         });
     });
 });

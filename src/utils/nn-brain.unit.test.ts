@@ -53,9 +53,9 @@ describe('utils', () => {
                 city: 'Miami',
                 region: 'Florida',
                 country: 'United States',
-                os: 'iPhone',
+                os: 'iOS',
             });
-            expect(result).toBe(0);
+            expect(result).toBeGreaterThan(0.8);
         });
     });
 });

@@ -5,7 +5,7 @@ export const buildDictionarySection = (
 
     [...new Set(values)].forEach((value) => {
         if (section[value] === undefined) {
-            section[value] = Object.keys(section).length;
+            section[value] = Object.keys(section).length + 1;
         }
     });
 
