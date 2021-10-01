@@ -1,8 +1,13 @@
 import { NeuralNetwork } from 'brain.js';
-import { NNInput } from '../types/nn-input';
+import { NNParameter } from '../types/nn-parameter';
+import { NNNormalizedInput } from '../types/nn-normalized-input';
+import { normalize } from './normalize';
 
-export const predictTraffic = (net: NeuralNetwork, input: NNInput): number => {
-    const result = net.run<NNInput, number[]>(input);
+export const predictTraffic = (
+    net: NeuralNetwork,
+    input: NNParameter
+): number => {
+    const result = net.run<NNNormalizedInput, number[]>(normalize(input));
 
     return result[0];
 };

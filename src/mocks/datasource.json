@@ -2,37 +2,55 @@
     "datasource": [
         {
             "input": {
-                "city": 0,
-                "region": 0,
-                "country": 0,
-                "device": 0
+                "city": "Miami",
+                "region": "Florida",
+                "country": "United States",
+                "os": "iOS"
+            },
+            "output": [1]
+        },
+        {
+            "input": {
+                "city": "Jacksonville",
+                "region": "Florida",
+                "country": "United States",
+                "os": "iOS"
+            },
+            "output": [1]
+        },
+        {
+            "input": {
+                "city": "Los Angeles",
+                "region": "California",
+                "country": "United States",
+                "os": "iOS"
+            },
+            "output": [1]
+        },
+        {
+            "input": {
+                "city": "Los Angeles",
+                "region": "California",
+                "country": "United States",
+                "os": "Android"
+            },
+            "output": [1]
+        },
+        {
+            "input": {
+                "city": "Jacksonville",
+                "region": "Florida",
+                "country": "United States",
+                "os": "Android"
             },
             "output": [0]
         },
         {
             "input": {
-                "city": 0.1,
-                "region": 0.1,
-                "country": 0.1,
-                "device": 0.1
-            },
-            "output": [1]
-        },
-        {
-            "input": {
-                "city": 0.2,
-                "region": 0.1,
-                "country": 0.2,
-                "device": 0.1
-            },
-            "output": [1]
-        },
-        {
-            "input": {
-                "city": 0.1,
-                "region": 0.2,
-                "country": 0.1,
-                "device": 0.1
+                "city": "Miami",
+                "region": "Florida",
+                "country": "United States",
+                "os": "Android"
             },
             "output": [0]
         }
