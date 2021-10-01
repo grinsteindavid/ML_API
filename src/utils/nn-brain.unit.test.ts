@@ -55,7 +55,43 @@ describe('utils', () => {
                 country: 'United States',
                 os: 'iOS',
             });
-            expect(result).toBeGreaterThan(0.8);
+            expect(result).toBeGreaterThanOrEqual(0.8);
+        });
+        it('should predict input as lesser than 0.1', () => {
+            const net = new brain.NeuralNetwork();
+            net.train(
+                datasource.map((item) => {
+                    return {
+                        ...item,
+                        input: {
+                            city: normalizeByMinMax(DICTIONARY, {
+                                section: 'city',
+                                value: item.input.city,
+                            }),
+                            region: normalizeByMinMax(DICTIONARY, {
+                                section: 'region',
+                                value: item.input.region,
+                            }),
+                            country: normalizeByMinMax(DICTIONARY, {
+                                section: 'country',
+                                value: item.input.country,
+                            }),
+                            os: normalizeByMinMax(DICTIONARY, {
+                                section: 'os',
+                                value: item.input.os,
+                            }),
+                        },
+                    };
+                })
+            );
+
+            const result = predictTraffic(net, {
+                city: 'Miami',
+                region: 'Florida',
+                country: 'United States',
+                os: 'Android',
+            });
+            expect(result).toBeLessThanOrEqual(0.1);
         });
     });
 });
