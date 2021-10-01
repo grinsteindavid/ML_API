@@ -1,6 +1,6 @@
 import { NNDictionary } from '../types/nn-dictionary';
 
-export const diccionary: NNDictionary = {
+export const DICTIONARY: NNDictionary = {
     city: {},
     region: {},
     country: {},

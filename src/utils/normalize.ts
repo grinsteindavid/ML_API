@@ -1,20 +1,20 @@
-import { diccionary } from '../constants/dicctionary';
+import { DICTIONARY } from '../constants/dicctionary';
 import { NNDictionary, NNDictionaryKeys } from '../types/nn-dictionary';
 import { NNNormalizedInput } from '../types/nn-normalized-input';
 import { NNParameter } from '../types/nn-parameter';
 
 export const normalize = (input: NNParameter): NNNormalizedInput => {
     return {
-        city: parseParameter(diccionary, { key: 'city', value: input['city'] }),
-        country: parseParameter(diccionary, {
+        city: parseParameter(DICTIONARY, { key: 'city', value: input['city'] }),
+        country: parseParameter(DICTIONARY, {
             key: 'country',
             value: input['country'],
         }),
-        region: parseParameter(diccionary, {
+        region: parseParameter(DICTIONARY, {
             key: 'region',
             value: input['region'],
         }),
-        os: parseParameter(diccionary, {
+        os: parseParameter(DICTIONARY, {
             key: 'os',
             value: input['os'],
         }),
@@ -22,22 +22,27 @@ export const normalize = (input: NNParameter): NNNormalizedInput => {
 };
 
 export const parseParameter = (
-    diccionary: NNDictionary,
+    dictionary: NNDictionary,
     parameter: { key: NNDictionaryKeys; value: string }
 ): number => {
     let value = 0;
-    if (diccionary[parameter.key][parameter.value] !== undefined) {
-        value = diccionary[parameter.key][parameter.value];
+    if (dictionary[parameter.key][parameter.value] !== undefined) {
+        value = dictionary[parameter.key][parameter.value];
     }
 
     return value;
 };
 
-export const buildDicctionary = (
-    diccionary: NNDictionary,
-    parameter: { key: NNDictionaryKeys; value: string[] }
+export const buildDicctionarySection = (
+    values: string[]
 ): { [key: string]: number } => {
     const section: { [key: string]: number } = {};
+
+    [...new Set(values)].forEach((value) => {
+        if (section[value] === undefined) {
+            section[value] = Object.keys(section).length + 1;
+        }
+    });
 
     return section;
 };
