@@ -5,29 +5,34 @@ import { NNParameter } from '../types/nn-parameter';
 
 export const normalize = (input: NNParameter): NNNormalizedInput => {
     return {
-        city: parseParameter(DICTIONARY, { key: 'city', value: input['city'] }),
-        country: parseParameter(DICTIONARY, {
+        city: normalizeByMinMax(DICTIONARY, {
+            key: 'city',
+            value: input['city'],
+        }),
+        country: normalizeByMinMax(DICTIONARY, {
             key: 'country',
             value: input['country'],
         }),
-        region: parseParameter(DICTIONARY, {
+        region: normalizeByMinMax(DICTIONARY, {
             key: 'region',
             value: input['region'],
         }),
-        os: parseParameter(DICTIONARY, {
+        os: normalizeByMinMax(DICTIONARY, {
             key: 'os',
             value: input['os'],
         }),
     };
 };
 
-export const parseParameter = (
+export const normalizeByMinMax = (
     dictionary: NNDictionary,
     parameter: { key: NNDictionaryKeys; value: string }
 ): number => {
     let value = 0;
     if (dictionary[parameter.key][parameter.value] !== undefined) {
-        value = dictionary[parameter.key][parameter.value];
+        value =
+            dictionary[parameter.key][parameter.value] /
+            (Object.keys(dictionary[parameter.key]).length + 1);
     }
 
     return value;

@@ -4,7 +4,7 @@ import app from './app';
 import { datasource } from './mocks/datasource.json';
 import brain from 'brain.js';
 import { DICTIONARY } from './constants/dicctionary';
-import { buildDicctionarySection } from './utils/normalize';
+import { buildDicctionarySection, normalizeByMinMax } from './utils/normalize';
 
 export const net = new brain.NeuralNetwork();
 
@@ -27,6 +27,24 @@ app.listen(3000, async () => {
             datasource.map((item) => {
                 return {
                     ...item,
+                    input: {
+                        city: normalizeByMinMax(DICTIONARY, {
+                            key: 'city',
+                            value: item.input.city,
+                        }),
+                        region: normalizeByMinMax(DICTIONARY, {
+                            key: 'region',
+                            value: item.input.region,
+                        }),
+                        country: normalizeByMinMax(DICTIONARY, {
+                            key: 'country',
+                            value: item.input.country,
+                        }),
+                        os: normalizeByMinMax(DICTIONARY, {
+                            key: 'os',
+                            value: item.input.os,
+                        }),
+                    },
                 };
             })
         );
