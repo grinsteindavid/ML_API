@@ -22,7 +22,7 @@ DICTIONARY['os'] = buildDictionarySection(
     datasource.map((item) => item.input.os)
 );
 
-app.listen(3000, async () => {
+app.listen(3001, async () => {
     try {
         const result = net.train(
             datasource.map((item) => {

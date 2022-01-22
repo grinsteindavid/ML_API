@@ -14,5 +14,6 @@ export const predict = async (
 };
 
 export const getModel = async (req: Request, res: Response) => {
-    res.status(200).json({ model: net.toJSON() });
+    const response = { model: net.toJSON() };
+    res.status(200).json(response);
 };
